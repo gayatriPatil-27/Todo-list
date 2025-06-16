@@ -1,0 +1,32 @@
+/* style.css */
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.filter-btn {
+  padding: 4px 10px;
+  border-radius: 5px;
+  color: #4b5563;
+}
+
+.filter-btn.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.task-enter {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
