@@ -3,41 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>To Do List</title>
+  <title>To Do List - Enhanced UI</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet">
+  <!-- <style>
+    body {
+      background-image: url("D:/SPCL/todo-app/back5.avif");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .todo-container {
+  background-color: rgb(255, 255, 255);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* For Safari */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 48rem;
+  margin: auto;
+  margin-left: 40%;
+  margin-top: 7% ;
+}
+
+
+    .input-group input,
+    .input-group select {
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 0.5rem 0.75rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .filter-btn {
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      background-color: #2563eb;
+      color: white;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+    }
+  </style> -->
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md w-full max-w-xl">
-    <h1 class="text-2xl font-bold text-center mb-4">To Do List</h1>
+<body class="bg-gray-100/80 min-h-screen flex items-center justify-center px-4">
+  <div class="todo-container">
+    <h1 class="text-3xl font-bold text-center mb-6 tracking-wide text-gray-800">DailyPlanner</h1>
 
     <!-- Input Area -->
-    <div class="flex flex-col sm:flex-row gap-2 mb-4">
-      <div class="flex gap-2 flex-grow">
-        <input id="taskInput" type="text" placeholder="Add a new task" class="flex-grow px-4 py-2 border rounded-md" />
-        <input id="dueDate" type="date" class="px-2 py-2 border rounded-md w-[140px]" />
-        <select id="priority" class="px-2 py-2 border rounded-md">
-          <option value="low">Low</option>
-          <option value="medium" selected>Medium</option>
-          <option value="high">High</option>
-        </select>
-      </div>
-      <button id="addTaskBtn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Add</button>
+    <div class="input-group flex flex-col sm:flex-row gap-3 items-center bg-gray-50 p-4 rounded-lg shadow-sm mb-6">
+      <input id="taskInput" type="text" placeholder="Add a new task" class="flex-grow" />
+      <input id="dueDate" type="date" class="w-40" />
+      <select id="priority" class="text-sm font-medium">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button id="addTaskBtn" class="px-5 py-2 bg-blue-600 text-white rounded-full font-semibold shadow hover:bg-blue-700 transition transform hover:scale-105">Add</button>
     </div>
 
     <!-- Filter Buttons -->
     <div class="flex justify-center gap-4 mb-4">
-      <button class="filter-btn active text-sm font-medium" data-filter="all">All</button>
-      <button class="filter-btn text-sm font-medium" data-filter="active">Active</button>
-      <button class="filter-btn text-sm font-medium" data-filter="completed">Completed</button>
+      <button class="filter-btn " data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
     </div>
 
     <!-- Task List -->
-    <ul id="taskList" class="space-y-2"></ul>
+    <ul id="taskList" class="space-y-3"></ul>
 
     <!-- Footer -->
-    <div class="mt-4 flex justify-between text-sm text-gray-500">
-      <span id="taskCounter">0 tasks</span>
-      <button id="clearCompleted" class="hover:underline text-red-500">Clear Completed</button>
+    <div class="mt-6 flex justify-between text-sm text-gray-600">
+      <span id="taskCounter">All: 0 | Active: 0 | Completed: 0</span>
+      <button id="clearCompleted" class="text-red-600 hover:underline font-medium">Clear Completed</button>
     </div>
   </div>
 

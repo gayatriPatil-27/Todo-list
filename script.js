@@ -131,15 +131,53 @@ function editTask(id) {
   }
 }
 
+// function editTask(id) {
+//   const task = tasks.find(t => t.id === id);
+
+//   const newText = prompt('Edit task text:', task.text) || task.text;
+//   const newDueDate = prompt('Edit due date (YYYY-MM-DD):', task.dueDate || '') || task.dueDate;
+//   const newPriority = prompt('Edit priority (low, medium, high):', task.priority || 'medium') || task.priority;
+
+//   // Normalize and validate priority
+//   const validPriorities = ['low', 'medium', 'high'];
+//   const safePriority = validPriorities.includes(newPriority.toLowerCase())
+//     ? newPriority.toLowerCase()
+//     : task.priority;
+
+//   task.text = newText.trim();
+//   task.dueDate = newDueDate.trim();
+//   task.priority = safePriority;
+
+//   renderTasks();
+// }
+
+
 // Filter Buttons
 filterButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    filterButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    // Reset all buttons
+    filterButtons.forEach(b => {
+      b.classList.remove(
+        'bg-blue-500', 'text-white', 'border', 'border-blue-500',
+        'rounded-full', 'px-4', 'py-1', 'shadow-md'
+      );
+      b.classList.add('text-gray-600', 'hover:text-blue-600');
+    });
+
+    // Style the selected button
+    btn.classList.remove('text-gray-600');
+    btn.classList.add(
+      'bg-blue-500', 'text-white', 'border', 'border-blue-500',
+      'rounded-full', 'px-4', 'py-1', 'shadow-md'
+    );
+
+    // Set the current filter
     currentFilter = btn.dataset.filter;
     renderTasks();
   });
 });
+
+
 
 
 // Clear Completed Tasks
